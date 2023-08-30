@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'onboarding_view/onboarding_page_view.dart';
+import 'views/onboarding_view/onboarding_page_view.dart';
 
 void main() {
   runApp(const IntroView());
@@ -12,6 +12,7 @@ class IntroView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: OnBoardingPage(),
     );
   }
