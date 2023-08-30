@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intro_view/views/home_view/home_view.dart';
 import 'package:intro_view/views/onboarding_view/widgets/custom_onboarding_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
@@ -61,7 +62,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         color: Colors.white,
         child: isLastPage
             ? TextButton(
-                onPressed: () {
+                onPressed: () async {
+                  //to make it only one time at frist time installing app
+                  final prefs = await SharedPreferences.getInstance();
+                  prefs.setBool('showHome', true);
+
+                  //navigate to home page
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const HomePageView(),
                   ));
